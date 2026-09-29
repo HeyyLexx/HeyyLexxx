@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome to My Little Universe</title>
+<style>
+:root{color-scheme:light;--bg:#c9b8f5;--card:#eee8ffdd;--text:#35254f;--muted:#67577d;--accent:#8064bd;--border:#a992d8}
+*{box-sizing:border-box} body{margin:0;font-family:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--text)}
+#app{min-height:100vh;background:radial-gradient(circle at 15% 15%,#eee8ff99,transparent 22%),radial-gradient(circle at 85% 20%,#a994dc66,transparent 20%),var(--bg);padding:34px 22px 42px;position:relative;overflow:hidden}
+#app:before{content:"🦋  ✦  🦋";position:absolute;top:22px;right:4%;font-size:34px;opacity:.45;letter-spacing:18px;transform:rotate(-8deg)}#app:after{content:"☾";position:absolute;top:30px;left:5%;font-size:58px;color:#5d477d;opacity:.55}
+.wrap{max-width:1050px;margin:auto;position:relative;z-index:1}.top{display:block;text-align:center;margin-bottom:38px}.brand{font-size:clamp(28px,5vw,48px);font-weight:700;letter-spacing:.5px}.date{color:var(--muted);font-size:16px;margin-top:10px}
+.hero{text-align:center;margin-bottom:34px}.time{display:none}.greeting{font-size:clamp(28px,5vw,46px);margin-top:16px;font-weight:700;font-style:italic}.era{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(24px,4vw,36px);margin-top:8px}.intro{font-size:16px;color:var(--muted);margin:10px auto 0;max-width:680px;font-style:italic}
+.quote{max-width:760px;margin:28px auto 0;padding:18px 24px;border-left:4px solid var(--accent);background:#f4efff88;border-radius:14px;font-style:italic;font-size:17px;line-height:1.6}
+.search{display:flex;max-width:700px;margin:30px auto 0;background:#f8f5ffcc;border:1px solid var(--border);border-radius:22px;padding:7px;box-shadow:0 12px 30px #5b477d20}.search input{flex:1;border:0;outline:0;background:transparent;color:var(--text);padding:14px 16px;font-size:16px}.search button{border:0;border-radius:17px;background:var(--accent);color:white;padding:0 22px;font-weight:700;cursor:pointer}
+.section{margin:38px 0 14px;text-align:center;font-size:18px;font-weight:800}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;text-align:center;text-decoration:none;color:var(--text);transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 12px 28px #5b477d22}.icon{font-size:32px;margin-bottom:10px}.title{font-weight:750;font-size:17px}.desc{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
+.bottom-quote{text-align:center;margin-top:48px;font-family:"Brush Script MT","Segoe Script",cursive;font-size:25px}.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px;letter-spacing:.5px}
+@media(max-width:560px){#app{padding:28px 16px}.search button{padding:0 15px}.quote{font-size:15px}.date{font-size:14px}}
+</style>
+</head>
+<body>
+<div id="app"><div class="wrap">
+  <div class="top"><div class="brand">welcome to my little universe</div><div class="date">Lexx ♡ Tuesday, September 29, 2026</div></div>
+  <main class="hero">
+    <div class="greeting">Heyy, I'm Lexx.</div><div class="era">current era : BECOMING</div><div class="intro">a space for my mind, life, dreams, and everything I am becoming</div>
+    <div class="quote">“if you don't like something change it, if you cant change it change your attitude.” ~Maya Angelou</div>
+    <form class="search" id="searchForm"><input id="searchInput" aria-label="Search the web" placeholder="Search Google or type a URL"><button>Search</button></form>
+  </main>
+  <div class="section">my little universe</div>
+  <div class="grid">
+    <a class="card" href="#"><div class="icon">🎓</div><div class="title">School</div><div class="desc">classes, assignments & learning</div></a>
+    <a class="card" href="#"><div class="icon">📝</div><div class="title">Notes</div><div class="desc">thoughts, lists & ideas</div></a>
+    <a class="card" href="#"><div class="icon">📖</div><div class="title">Journal</div><div class="desc">my private little pages</div></a>
+    <a class="card" href="#"><div class="icon">🎯</div><div class="title">Goals</div><div class="desc">dreams I'm turning into plans</div></a>
+    <a class="card" href="#"><div class="icon">🎧</div><div class="title">Music</div><div class="desc">songs for every era</div></a>
+    <a class="card" href="#"><div class="icon">✨</div><div class="title">Content</div><div class="desc">create, save & inspire</div></a>
+    <a class="card" href="#"><div class="icon">💜</div><div class="title">Favorite Sites</div><div class="desc">my favorite corners of the internet</div></a>
+  </div>
+  <div class="bottom-quote">“there is no rush, I am still becoming” ~Daily Reminder</div>
+  <div class="footer">Created with Love, Faith, and Intention.</div>
+</div></div>
+<script>
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=document.getElementById('searchInput').value.trim();if(q) location.href='https://www.google.com/search?q='+encodeURIComponent(q)});
+</script>
+</body></html>
