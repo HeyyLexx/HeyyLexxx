@@ -516,7 +516,22 @@ button{
     grid-template-columns:1fr;
   }
 }
-</style>
+</style> school-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #8b6f9f;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.school-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
 </head>
 
 <body>
@@ -553,11 +568,11 @@ Heyy, I'm Lexx.
 </div>
 
 <div class="era">
-current era : BECOMING
+Current era : BECOMING
 </div>
 
 <div class="intro">
-a space for my mind, life, dreams, and everything I am becoming
+A space for my mind, life, dreams, and everything I am becoming
 </div>
 
 <div class="quote">
@@ -585,18 +600,22 @@ my little universe
 </div>
 
 
-<div class="grid">
+<div id="school" class="modal">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal('school')">&times;</button>
 
-<button class="card" data-open="school">
+    <h2>🎓 School</h2>
+    <p>Access your online classes through Campuswire.</p>
 
-<div class="icon">🎓</div>
-
-<div class="title">
-School
-</div>
-
-<div class="desc">
-classes, assignments & learning
+    <a
+      href="https://campuswire.com/signin?returnTo=%2Fc"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="school-link"
+    >
+      Go to My Online Classes
+    </a>
+  </div>
 </div>
 
 </button>
