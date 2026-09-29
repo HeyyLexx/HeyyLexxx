@@ -4,42 +4,2429 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Welcome to My Little Universe</title>
+
 <style>
-:root{color-scheme:light;--bg:#c9b8f5;--card:#eee8ffdd;--text:#35254f;--muted:#67577d;--accent:#8064bd;--border:#a992d8}
-*{box-sizing:border-box} body{margin:0;font-family:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--text)}
-#app{min-height:100vh;background:radial-gradient(circle at 15% 15%,#eee8ff99,transparent 22%),radial-gradient(circle at 85% 20%,#a994dc66,transparent 20%),var(--bg);padding:34px 22px 42px;position:relative;overflow:hidden}
-#app:before{content:"🦋  ✦  🦋";position:absolute;top:22px;right:4%;font-size:34px;opacity:.45;letter-spacing:18px;transform:rotate(-8deg)}#app:after{content:"☾";position:absolute;top:30px;left:5%;font-size:58px;color:#5d477d;opacity:.55}
-.wrap{max-width:1050px;margin:auto;position:relative;z-index:1}.top{display:block;text-align:center;margin-bottom:38px}.brand{font-size:clamp(28px,5vw,48px);font-weight:700;letter-spacing:.5px}.date{color:var(--muted);font-size:16px;margin-top:10px}
-.hero{text-align:center;margin-bottom:34px}.time{display:none}.greeting{font-size:clamp(28px,5vw,46px);margin-top:16px;font-weight:700;font-style:italic}.era{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(24px,4vw,36px);margin-top:8px}.intro{font-size:16px;color:var(--muted);margin:10px auto 0;max-width:680px;font-style:italic}
-.quote{max-width:760px;margin:28px auto 0;padding:18px 24px;border-left:4px solid var(--accent);background:#f4efff88;border-radius:14px;font-style:italic;font-size:17px;line-height:1.6}
-.search{display:flex;max-width:700px;margin:30px auto 0;background:#f8f5ffcc;border:1px solid var(--border);border-radius:22px;padding:7px;box-shadow:0 12px 30px #5b477d20}.search input{flex:1;border:0;outline:0;background:transparent;color:var(--text);padding:14px 16px;font-size:16px}.search button{border:0;border-radius:17px;background:var(--accent);color:white;padding:0 22px;font-weight:700;cursor:pointer}
-.section{margin:38px 0 14px;text-align:center;font-size:18px;font-weight:800}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;text-align:center;text-decoration:none;color:var(--text);transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 12px 28px #5b477d22}.icon{font-size:32px;margin-bottom:10px}.title{font-weight:750;font-size:17px}.desc{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
-.bottom-quote{text-align:center;margin-top:48px;font-family:"Brush Script MT","Segoe Script",cursive;font-size:25px}.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px;letter-spacing:.5px}
-@media(max-width:560px){#app{padding:28px 16px}.search button{padding:0 15px}.quote{font-size:15px}.date{font-size:14px}}
+:root{
+  color-scheme:light;
+  --bg:#c9b8f5;
+  --card:#eee8ffdd;
+  --text:#35254f;
+  --muted:#67577d;
+  --accent:#8064bd;
+  --border:#a992d8;
+  --white:#fffaff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+#app{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 15%,#eee8ff99,transparent 22%),
+    radial-gradient(circle at 85% 20%,#a994dc66,transparent 20%),
+    var(--bg);
+  padding:34px 22px 42px;
+  position:relative;
+  overflow:hidden;
+}
+
+#app:before{
+  content:"🦋  ✦  🦋";
+  position:absolute;
+  top:22px;
+  right:4%;
+  font-size:34px;
+  opacity:.45;
+  letter-spacing:18px;
+  transform:rotate(-8deg);
+}
+
+#app:after{
+  content:"☾";
+  position:absolute;
+  top:30px;
+  left:5%;
+  font-size:58px;
+  color:#5d477d;
+  opacity:.55;
+}
+
+.wrap{
+  max-width:1050px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.top{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.brand{
+  font-size:clamp(28px,5vw,48px);
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+.date{
+  color:var(--muted);
+  font-size:16px;
+  margin-top:10px;
+}
+
+.livebar{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.livepill{
+  background:#f8f5ffcc;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:8px 14px;
+  font-size:14px;
+  box-shadow:0 6px 18px #5b477d18;
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:34px;
+}
+
+.greeting{
+  font-size:clamp(28px,5vw,46px);
+  margin-top:16px;
+  font-weight:700;
+  font-style:italic;
+}
+
+.era{
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:clamp(24px,4vw,36px);
+  margin-top:8px;
+}
+
+.intro{
+  font-size:16px;
+  color:var(--muted);
+  margin:10px auto 0;
+  max-width:680px;
+  font-style:italic;
+}
+
+.quote{
+  max-width:760px;
+  margin:28px auto 0;
+  padding:18px 24px;
+  border-left:4px solid var(--accent);
+  background:#f4efff88;
+  border-radius:14px;
+  font-style:italic;
+  font-size:17px;
+  line-height:1.6;
+}
+
+.search{
+  display:flex;
+  max-width:700px;
+  margin:30px auto 0;
+  background:#f8f5ffcc;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:7px;
+  box-shadow:0 12px 30px #5b477d20;
+}
+
+.search input{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  padding:14px 16px;
+  font-size:16px;
+}
+
+.search button{
+  border:0;
+  border-radius:17px;
+  background:var(--accent);
+  color:white;
+  padding:0 22px;
+  font-weight:700;
+}
+
+.section{
+  margin:38px 0 14px;
+  text-align:center;
+  font-size:18px;
+  font-weight:800;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--text);
+  transition:transform .18s,box-shadow .18s;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-4px) rotate(-1deg);
+  box-shadow:0 12px 28px #5b477d22;
+}
+
+.icon{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.title{
+  font-weight:750;
+  font-size:17px;
+}
+
+.desc{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:6px;
+  line-height:1.4;
+}
+
+.bottom-quote{
+  text-align:center;
+  margin-top:48px;
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:25px;
+}
+
+.footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  margin-top:24px;
+  letter-spacing:.5px;
+}
+
+
+/* MODALS */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#35254f66;
+  z-index:20;
+  padding:20px;
+  overflow:auto;
+  backdrop-filter:blur(3px);
+}
+
+.modal.open{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.panel{
+  width:min(850px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#f8f5ff;
+  border:1px solid var(--border);
+  border-radius:26px;
+  padding:24px;
+  box-shadow:0 20px 60px #35254f55;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:16px;
+  top:12px;
+  border:0;
+  background:#e8defd;
+  color:var(--text);
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  font-size:22px;
+}
+
+.panel h2{
+  margin:0 42px 6px 0;
+}
+
+.panel-sub{
+  color:var(--muted);
+  margin:0 0 18px;
+}
+
+.toolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+
+.input,
+.textarea,
+.select{
+  width:100%;
+  border:1px solid var(--border);
+  background:white;
+  border-radius:13px;
+  padding:11px;
+  color:var(--text);
+  outline:none;
+}
+
+.textarea{
+  min-height:170px;
+  resize:vertical;
+}
+
+.btn{
+  border:0;
+  background:var(--accent);
+  color:white;
+  border-radius:12px;
+  padding:10px 15px;
+  font-weight:700;
+}
+
+.btn.secondary{
+  background:#e6dcfa;
+  color:var(--text);
+}
+
+.btn.danger{
+  background:#b85c7b;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.stack>*{
+  margin-bottom:10px;
+}
+
+.list{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+
+.item{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.item-main{
+  flex:1;
+}
+
+.small{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.done{
+  text-decoration:line-through;
+  opacity:.6;
+}
+
+.empty{
+  padding:25px;
+  text-align:center;
+  color:var(--muted);
+  background:#eee8ff88;
+  border-radius:16px;
+}
+
+.note-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:14px;
+  margin-bottom:10px;
+}
+
+.note-card h3{
+  margin:0 0 5px;
+}
+
+.note-card p{
+  white-space:pre-wrap;
+  margin:0;
+  line-height:1.5;
+}
+
+.links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:12px;
+}
+
+.linkbtn{
+  display:block;
+  text-decoration:none;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  text-align:center;
+  color:var(--text);
+  font-weight:700;
+}
+
+.linkbtn:hover{
+  background:#eee8ff;
+}
+
+.progress-wrap{
+  margin:12px 0;
+}
+
+.progress{
+  height:10px;
+  background:#e5dcf5;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.progress>span{
+  display:block;
+  height:100%;
+  background:var(--accent);
+  width:0;
+}
+
+.todo-line{
+  display:flex;
+  gap:8px;
+}
+
+.todo-line .input{
+  flex:1;
+}
+
+.calc{
+  max-width:360px;
+  margin:auto;
+}
+
+.calc-display{
+  width:100%;
+  font-size:25px;
+  text-align:right;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:white;
+  margin-bottom:10px;
+}
+
+.calc-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.calc-grid button{
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  background:#e6dcfa;
+  color:var(--text);
+  font-weight:700;
+}
+
+.calc-grid .equal{
+  background:var(--accent);
+  color:white;
+}
+
+.weather{
+  font-size:16px;
+}
+
+.weather strong{
+  font-size:18px;
+}
+
+@media(max-width:560px){
+
+  #app{
+    padding:28px 16px;
+  }
+
+  .search button{
+    padding:0 15px;
+  }
+
+  .quote{
+    font-size:15px;
+  }
+
+  .date{
+    font-size:14px;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
+
 <body>
-<div id="app"><div class="wrap">
-  <div class="top"><div class="brand">welcome to my little universe</div><div class="date">Lexx ♡ Tuesday, September 29, 2026</div></div>
-  <main class="hero">
-    <div class="greeting">Heyy, I'm Lexx.</div><div class="era">current era : BECOMING</div><div class="intro">a space for my mind, life, dreams, and everything I am becoming</div>
-    <div class="quote">“if you don't like something change it, if you cant change it change your attitude.” ~Maya Angelou</div>
-    <form class="search" id="searchForm"><input id="searchInput" aria-label="Search the web" placeholder="Search Google or type a URL"><button>Search</button></form>
-  </main>
-  <div class="section">my little universe</div>
-  <div class="grid">
-    <a class="card" href="#"><div class="icon">🎓</div><div class="title">School</div><div class="desc">classes, assignments & learning</div></a>
-    <a class="card" href="#"><div class="icon">📝</div><div class="title">Notes</div><div class="desc">thoughts, lists & ideas</div></a>
-    <a class="card" href="#"><div class="icon">📖</div><div class="title">Journal</div><div class="desc">my private little pages</div></a>
-    <a class="card" href="#"><div class="icon">🎯</div><div class="title">Goals</div><div class="desc">dreams I'm turning into plans</div></a>
-    <a class="card" href="#"><div class="icon">🎧</div><div class="title">Music</div><div class="desc">songs for every era</div></a>
-    <a class="card" href="#"><div class="icon">✨</div><div class="title">Content</div><div class="desc">create, save & inspire</div></a>
-    <a class="card" href="#"><div class="icon">💜</div><div class="title">Favorite Sites</div><div class="desc">my favorite corners of the internet</div></a>
-  </div>
-  <div class="bottom-quote">“there is no rush, I am still becoming” ~Daily Reminder</div>
-  <div class="footer">Created with Love, Faith, and Intention.</div>
-</div></div>
+
+<div id="app">
+<div class="wrap">
+
+<div class="top">
+
+<div class="brand">
+welcome to my little universe
+</div>
+
+<div class="date" id="dateDisplay"></div>
+
+<div class="livebar">
+
+<div class="livepill">
+🕐 <span id="clock">Loading time...</span>
+</div>
+
+<div class="livepill weather" id="weather">
+🌤️ Weather: waiting for location...
+</div>
+
+</div>
+</div>
+
+
+<main class="hero">
+
+<div class="greeting">
+Heyy, I'm Lexx.
+</div>
+
+<div class="era">
+current era : BECOMING
+</div>
+
+<div class="intro">
+a space for my mind, life, dreams, and everything I am becoming
+</div>
+
+<div class="quote">
+“if you don't like something change it, if you cant change it change your attitude.” ~Maya Angelou
+</div>
+
+<form class="search" id="searchForm">
+
+<input
+id="searchInput"
+aria-label="Search the web"
+placeholder="Search Google or type a URL">
+
+<button>
+Search
+</button>
+
+</form>
+
+</main>
+
+
+<div class="section">
+my little universe
+</div>
+
+
+<div class="grid">
+
+<button class="card" data-open="school">
+
+<div class="icon">🎓</div>
+
+<div class="title">
+School
+</div>
+
+<div class="desc">
+classes, assignments & learning
+</div>
+
+</button>
+
+
+<button class="card" data-open="notes">
+
+<div class="icon">📝</div>
+
+<div class="title">
+Notes
+</div>
+
+<div class="desc">
+thoughts, lists & ideas
+</div>
+
+</button>
+
+
+<button class="card" data-open="journal">
+
+<div class="icon">📖</div>
+
+<div class="title">
+Journal
+</div>
+
+<div class="desc">
+my private little pages
+</div>
+
+</button>
+
+
+<button class="card" data-open="goals">
+
+<div class="icon">🎯</div>
+
+<div class="title">
+Goals
+</div>
+
+<div class="desc">
+dreams I'm turning into plans
+</div>
+
+</button>
+
+
+<button class="card" data-open="music">
+
+<div class="icon">🎧</div>
+
+<div class="title">
+Music
+</div>
+
+<div class="desc">
+songs for every era
+</div>
+
+</button>
+
+
+<button class="card" data-open="content">
+
+<div class="icon">✨</div>
+
+<div class="title">
+Content
+</div>
+
+<div class="desc">
+create, save & inspire
+</div>
+
+</button>
+
+
+<button class="card" data-open="favorites">
+
+<div class="icon">💜</div>
+
+<div class="title">
+Favorite Sites
+</div>
+
+<div class="desc">
+my favorite corners of the internet
+</div>
+
+</button>
+
+</div>
+
+
+<div class="bottom-quote">
+“there is no rush, I am still becoming” ~Daily Reminder
+</div>
+
+<div class="footer">
+Created with Love, Faith, and Intention.
+</div>
+
+</div>
+</div>
+
+
+<!-- SCHOOL -->
+
+<div class="modal" id="schoolModal">
+
+<div class="panel">
+
+<button class="close" data-close>×</button>
+
+<h2>🎓 My School</h2>
+
+<p class="panel-sub">
+Keep track of classes and assignments.
+</p>
+
+<div class="stack">
+
+<div class="row">
+
+<input
+class="input"
+id="className"
+placeholder="Class name">
+
+<input
+class="input"
+id="classInfo"
+placeholder="Professor, room, or notes">
+
+</div>
+
+<button class="btn" id="addClass">
++ Add Class
+</button>
+
+</div>
+
+<div id="classList" class="list"></div>
+
+<hr>
+
+<div class="stack">
+
+<div class="row">
+
+<input
+class="input"
+id="assignmentName"
+placeholder="Assignment">
+
+<input
+class="input"
+id="assignmentDue"
+type="date">
+
+</div>
+
+<input
+class="input"
+id="assignmentClass"
+placeholder="Class">
+
+<button class="btn" id="addAssignment">
++ Add Assignment
+</button>
+
+</div>
+
+<div id="assignmentList" class="list"></div>
+
+</div>
+</div>
+
+
+<!-- NOTES -->
+
+<div class="modal" id="notesModal">
+
+<div class="panel">
+
+<button class="close" data-close>×</button>
+
+<h2>📝 My Notes</h2>
+
+<p class="panel-sub">
+Your notes, to-do list, and calculator are saved in this browser.
+</p>
+
+
+<div class="stack">
+
+<input
+class="input"
+id="noteTitle"
+placeholder="Note title">
+
+<textarea
+class="textarea"
+id="noteBody"
+placeholder="Write your note here..."></textarea>
+
+<button class="btn" id="saveNote">
+💾 Save Note
+</button>
+
+</div>
+
+
+<div id="notesList"></div>
+
+
+<hr>
+
+<h3>
+✅ To-Do List
+</h3>
+
+<div class="todo-line">
+
+<input
+class="input"
+id="todoInput"
+placeholder="Add a task...">
+
+<button class="btn" id="addTodo">
+Add
+</button>
+
+</div>
+
+<div id="todoList" class="list"></div>
+
+
+<hr>
+
+<h3>
+🧮 Calculator
+</h3>
+
+<div class="calc">
+
+<input
+class="calc-display"
+id="calcDisplay"
+value="0"
+readonly>
+
+<div class="calc-grid">
+
+<button data-calc="7">7</button>
+<button data-calc="8">8</button>
+<button data-calc="9">9</button>
+<button data-calc="/">÷</button>
+
+<button data-calc="4">4</button>
+<button data-calc="5">5</button>
+<button data-calc="6">6</button>
+<button data-calc="*">×</button>
+
+<button data-calc="1">1</button>
+<button data-calc="2">2</button>
+<button data-calc="3">3</button>
+<button data-calc="-">−</button>
+
+<button data-calc="0">0</button>
+<button data-calc=".">.</button>
+<button data-calc="C">C</button>
+<button data-calc="+">+</button>
+
+<button data-calc="(">(</button>
+<button data-calc=")">)</button>
+<button data-calc="back">⌫</button>
+<button class="equal" data-calc="=">=</button>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- JOURNAL -->
+
+<div class="modal" id="journalModal">
+
+<div class="panel">
+
+<button class="close" data-close>×</button>
+
+<h2>📖 My Journal</h2>
+
+<p class="panel-sub">
+A private-feeling journal stored locally in this browser.
+</p>
+
+<div class="stack">
+
+<input
+class="input"
+id="journalTitle"
+placeholder="Entry title">
+
+<textarea
+class="textarea"
+id="journalBody"
+placeholder="Dear diary..."></textarea>
+
+<button class="btn" id="saveJournal">
+📖 Save Entry
+</button>
+
+</div>
+
+<div id="journalList"></div>
+
+</div>
+</div>
+
+
+<!-- GOALS -->
+
+<div class="modal" id="goalsModal">
+
+<div class="panel">
+
+<button class="close" data-close>×</button>
+
+<h2>🎯 My Goals</h2>
+
+<p class="panel-sub">
+Turn your dreams into plans and track your progress.
+</p>
+
+<div class="stack">
+
+<div class="row">
+
+<input
+class="input"
+id="goalName"
+placeholder="Goal">
+
+<input
+class="input"
+id="goalDate"
+type="date">
+
+</div>
+
+<div class="row">
+
+<input
+class="input"
+id="goalStep"
+placeholder="First step">
+
+<select
+class="select"
+id="goalProgress">
+
+<option value="0">
+0% complete
+</option>
+
+<option value="25">
+25% complete
+</option>
+
+<option value="50">
+50% complete
+</option>
+
+<option value="75">
+75% complete
+</option>
+
+<option value="100">
+100% complete
+</option>
+
+</select>
+
+</div>
+
+<button class="btn" id="addGoal">
++ Add Goal
+</button>
+
+</div>
+
+<div id="goalList" class="list"></div>
+
+</div>
+</div>
+
+
+<!-- MUSIC -->
+
+<div class="modal" id="musicModal">
+
+<div class="panel">
+
+<button class="close" data-close>×</button>
+
+<h2>🎧 My Music</h2>
+
+<p class="panel-sub">
+Open your favorite music places.
+</p>
+
+<div class="links">
+
+<a
+class="linkbtn"
+href="https://www.pandora.com/"
+target="_blank"
+rel="noopener">
+🎶 Pandora
+</a>
+
+<a
+class="linkbtn"
+href="https://www.youtube.com/"
+target="_blank"
+rel="noopener">
+▶️ YouTube
+</a>
+
+<a
+class="linkbtn"
+href="https://open.spotify.com/"
+target="_blank"
+rel="noopener">
+🎧 Spotify
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- CONTENT -->
+
+<div class="modal" id="contentModal">
+
+<div class="panel">
+
+<button class="close" data-close>×</button>
+
+<h2>✨ My Content Studio</h2>
+
+<p class="panel-sub">
+Save ideas, captions, video concepts, and other creative thoughts.
+</p>
+
+<div class="stack">
+
+<input
+class="input"
+id="contentTitle"
+placeholder="Content idea title">
+
+<select
+class="select"
+id="contentType">
+
+<option>
+Video idea
+</option>
+
+<option>
+Post idea
+</option>
+
+<option>
+Caption
+</option>
+
+<option>
+Blog idea
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+<textarea
+class="textarea"
+id="contentBody"
+placeholder="Write your idea..."></textarea>
+
+<button class="btn" id="saveContent">
+✨ Save Idea
+</button>
+
+</div>
+
+<div id="contentList"></div>
+
+</div>
+</div>
+
+
+<!-- FAVORITE SITES -->
+
+<div class="modal" id="favoritesModal">
+
+<div class="panel">
+
+<button class="close" data-close>×</button>
+
+<h2>💜 Favorite Sites</h2>
+
+<p class="panel-sub">
+Your favorite corners of the internet.
+</p>
+
+<div class="links">
+
+<a
+class="linkbtn"
+href="https://chatgpt.com/"
+target="_blank"
+rel="noopener">
+💬 ChatGPT
+</a>
+
+<a
+class="linkbtn"
+href="https://www.facebook.com/"
+target="_blank"
+rel="noopener">
+💙 Facebook
+</a>
+
+<a
+class="linkbtn"
+href="https://mail.google.com/"
+target="_blank"
+rel="noopener">
+✉️ Gmail
+</a>
+
+<a
+class="linkbtn"
+href="https://www.youtube.com/"
+target="_blank"
+rel="noopener">
+▶️ YouTube
+</a>
+
+</div>
+
+</div>
+</div>
+
+
 <script>
-document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=document.getElementById('searchInput').value.trim();if(q) location.href='https://www.google.com/search?q='+encodeURIComponent(q)});
+
+/* =====================================
+   MY LITTLE UNIVERSE DATA
+===================================== */
+
+const STORAGE_KEY = "lexxLittleUniverse";
+
+function loadData(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(STORAGE_KEY)
+    ) || {
+
+      classes:[],
+      assignments:[],
+      notes:[],
+      todos:[],
+      journal:[],
+      goals:[],
+      content:[]
+
+    };
+
+  }catch(error){
+
+    return {
+
+      classes:[],
+      assignments:[],
+      notes:[],
+      todos:[],
+      journal:[],
+      goals:[],
+      content:[]
+
+    };
+
+  }
+
+}
+
+let data = loadData();
+
+
+function saveData(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
+
+}
+
+
+function esc(value){
+
+  return String(value ?? "")
+    .replace(/[&<>"']/g,function(character){
+
+      return {
+
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+
+      }[character];
+
+    });
+
+}
+
+
+function today(){
+
+  return new Date().toLocaleDateString(
+    undefined,
+    {
+      weekday:"long",
+      month:"long",
+      day:"numeric",
+      year:"numeric"
+    }
+  );
+
+}
+
+
+/* =====================================
+   LIVE CLOCK + DATE
+===================================== */
+
+function renderClock(){
+
+  const current = new Date();
+
+  document.getElementById("dateDisplay").textContent =
+    "Lexx ♡ " + today();
+
+  document.getElementById("clock").textContent =
+    current.toLocaleTimeString(
+      undefined,
+      {
+        hour:"numeric",
+        minute:"2-digit",
+        second:"2-digit"
+      }
+    );
+
+}
+
+setInterval(renderClock,1000);
+
+renderClock();
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+document
+.getElementById("searchForm")
+.addEventListener("submit",function(event){
+
+  event.preventDefault();
+
+  const query =
+    document
+    .getElementById("searchInput")
+    .value
+    .trim();
+
+  if(!query){
+    return;
+  }
+
+  const looksLikeURL =
+    /^(https?:\/\/|www\.)/i.test(query);
+
+  if(looksLikeURL){
+
+    location.href =
+      query.startsWith("http")
+      ? query
+      : "https://" + query;
+
+  }else{
+
+    location.href =
+      "https://www.google.com/search?q=" +
+      encodeURIComponent(query);
+
+  }
+
+});
+
+
+/* =====================================
+   OPEN / CLOSE WINDOWS
+===================================== */
+
+document
+.querySelectorAll("[data-open]")
+.forEach(function(button){
+
+  button.addEventListener("click",function(){
+
+    const windowName =
+      button.dataset.open + "Modal";
+
+    document
+      .getElementById(windowName)
+      .classList.add("open");
+
+  });
+
+});
+
+
+document
+.querySelectorAll("[data-close]")
+.forEach(function(button){
+
+  button.addEventListener("click",function(){
+
+    button
+      .closest(".modal")
+      .classList.remove("open");
+
+  });
+
+});
+
+
+document
+.querySelectorAll(".modal")
+.forEach(function(modal){
+
+  modal.addEventListener("click",function(event){
+
+    if(event.target === modal){
+
+      modal.classList.remove("open");
+
+    }
+
+  });
+
+});
+
+
+document.addEventListener("keydown",function(event){
+
+  if(event.key === "Escape"){
+
+    document
+      .querySelectorAll(".modal.open")
+      .forEach(function(modal){
+
+        modal.classList.remove("open");
+
+      });
+
+  }
+
+});
+
+
+/* =====================================
+   SCHOOL
+===================================== */
+
+function renderSchool(){
+
+  document.getElementById("classList").innerHTML =
+    data.classes.length
+
+    ?
+
+    data.classes.map(function(item,index){
+
+      return `
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <b>${esc(item.name)}</b>
+
+          <div class="small">
+            ${esc(item.info)}
+          </div>
+
+        </div>
+
+        <button
+          class="btn danger"
+          onclick="removeClass(${index})">
+          Delete
+        </button>
+
+      </div>
+
+      `;
+
+    }).join("")
+
+    :
+
+    `<div class="empty">
+      No classes added yet.
+    </div>`;
+
+
+  document.getElementById("assignmentList").innerHTML =
+    data.assignments.length
+
+    ?
+
+    data.assignments.map(function(item,index){
+
+      return `
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <b>${esc(item.name)}</b>
+
+          <div class="small">
+
+            ${esc(item.cls)}
+
+            ·
+
+            ${item.due
+              ? esc(item.due)
+              : "No due date"}
+
+          </div>
+
+        </div>
+
+        <button
+          class="btn danger"
+          onclick="removeAssignment(${index})">
+          Delete
+        </button>
+
+      </div>
+
+      `;
+
+    }).join("")
+
+    :
+
+    `<div class="empty">
+      No assignments added yet.
+    </div>`;
+
+}
+
+
+document
+.getElementById("addClass")
+.addEventListener("click",function(){
+
+  const name =
+    document
+    .getElementById("className")
+    .value
+    .trim();
+
+  if(!name){
+    return;
+  }
+
+  data.classes.push({
+
+    name:name,
+
+    info:
+      document
+      .getElementById("classInfo")
+      .value
+      .trim()
+
+  });
+
+  saveData();
+
+  document.getElementById("className").value="";
+  document.getElementById("classInfo").value="";
+
+  renderSchool();
+
+});
+
+
+document
+.getElementById("addAssignment")
+.addEventListener("click",function(){
+
+  const name =
+    document
+    .getElementById("assignmentName")
+    .value
+    .trim();
+
+  if(!name){
+    return;
+  }
+
+  data.assignments.push({
+
+    name:name,
+
+    cls:
+      document
+      .getElementById("assignmentClass")
+      .value
+      .trim(),
+
+    due:
+      document
+      .getElementById("assignmentDue")
+      .value
+
+  });
+
+  saveData();
+
+  document.getElementById("assignmentName").value="";
+  document.getElementById("assignmentClass").value="";
+  document.getElementById("assignmentDue").value="";
+
+  renderSchool();
+
+});
+
+
+function removeClass(index){
+
+  data.classes.splice(index,1);
+
+  saveData();
+
+  renderSchool();
+
+}
+
+
+function removeAssignment(index){
+
+  data.assignments.splice(index,1);
+
+  saveData();
+
+  renderSchool();
+
+}
+
+
+/* =====================================
+   NOTES
+===================================== */
+
+function renderNotes(){
+
+  const notesList =
+    document.getElementById("notesList");
+
+  notesList.innerHTML =
+    data.notes.length
+
+    ?
+
+    data.notes
+    .slice()
+    .reverse()
+    .map(function(item,reverseIndex){
+
+      const index =
+        data.notes.length - 1 - reverseIndex;
+
+      return `
+
+      <div class="note-card">
+
+        <h3>
+          ${esc(item.title || "Untitled Note")}
+        </h3>
+
+        <div class="small">
+          ${esc(item.date)}
+        </div>
+
+        <p>
+          ${esc(item.body)}
+        </p>
+
+        <br>
+
+        <button
+          class="btn danger"
+          onclick="removeNote(${index})">
+          Delete
+        </button>
+
+      </div>
+
+      `;
+
+    }).join("")
+
+    :
+
+    `<div class="empty">
+      No notes yet.
+    </div>`;
+
+
+  const todoList =
+    document.getElementById("todoList");
+
+  todoList.innerHTML =
+    data.todos.length
+
+    ?
+
+    data.todos.map(function(item,index){
+
+      return `
+
+      <div class="item">
+
+        <input
+          type="checkbox"
+          ${item.done ? "checked" : ""}
+          onchange="toggleTodo(${index})">
+
+        <div
+          class="item-main ${item.done ? "done" : ""}">
+
+          ${esc(item.text)}
+
+        </div>
+
+        <button
+          class="btn danger"
+          onclick="removeTodo(${index})">
+          ×
+        </button>
+
+      </div>
+
+      `;
+
+    }).join("")
+
+    :
+
+    `<div class="empty">
+      No tasks yet.
+    </div>`;
+
+}
+
+
+document
+.getElementById("saveNote")
+.addEventListener("click",function(){
+
+  const body =
+    document
+    .getElementById("noteBody")
+    .value
+    .trim();
+
+  if(!body){
+    return;
+  }
+
+  data.notes.push({
+
+    title:
+      document
+      .getElementById("noteTitle")
+      .value
+      .trim()
+      ||
+      "Untitled Note",
+
+    body:body,
+
+    date:today()
+
+  });
+
+  saveData();
+
+  document.getElementById("noteTitle").value="";
+  document.getElementById("noteBody").value="";
+
+  renderNotes();
+
+});
+
+
+document
+.getElementById("addTodo")
+.addEventListener("click",function(){
+
+  const input =
+    document.getElementById("todoInput");
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+    return;
+  }
+
+  data.todos.push({
+
+    text:text,
+
+    done:false
+
+  });
+
+  saveData();
+
+  input.value="";
+
+  renderNotes();
+
+});
+
+
+document
+.getElementById("todoInput")
+.addEventListener("keydown",function(event){
+
+  if(event.key === "Enter"){
+
+    document
+      .getElementById("addTodo")
+      .click();
+
+  }
+
+});
+
+
+function removeNote(index){
+
+  data.notes.splice(index,1);
+
+  saveData();
+
+  renderNotes();
+
+}
+
+
+function toggleTodo(index){
+
+  data.todos[index].done =
+    !data.todos[index].done;
+
+  saveData();
+
+  renderNotes();
+
+}
+
+
+function removeTodo(index){
+
+  data.todos.splice(index,1);
+
+  saveData();
+
+  renderNotes();
+
+}
+
+
+/* =====================================
+   CALCULATOR
+===================================== */
+
+let calculatorValue = "";
+
+document
+.querySelectorAll("[data-calc]")
+.forEach(function(button){
+
+  button.addEventListener("click",function(){
+
+    const value =
+      button.dataset.calc;
+
+    if(value === "C"){
+
+      calculatorValue="";
+
+    }
+
+    else if(value === "back"){
+
+      calculatorValue =
+        calculatorValue.slice(0,-1);
+
+    }
+
+    else if(value === "="){
+
+      try{
+
+        if(
+          !/^[0-9+\-*/().\s]+$/
+          .test(calculatorValue)
+        ){
+
+          throw new Error();
+
+        }
+
+        calculatorValue =
+          String(
+            Function(
+              '"use strict";return (' +
+              calculatorValue +
+              ')'
+            )()
+          );
+
+      }
+
+      catch(error){
+
+        calculatorValue="Error";
+
+      }
+
+    }
+
+    else{
+
+      if(calculatorValue === "Error"){
+
+        calculatorValue="";
+
+      }
+
+      calculatorValue += value;
+
+    }
+
+    document
+      .getElementById("calcDisplay")
+      .value =
+      calculatorValue || "0";
+
+  });
+
+});
+
+
+/* =====================================
+   JOURNAL
+===================================== */
+
+function renderJournal(){
+
+  const list =
+    document.getElementById("journalList");
+
+  list.innerHTML =
+    data.journal.length
+
+    ?
+
+    data.journal
+    .slice()
+    .reverse()
+    .map(function(item,reverseIndex){
+
+      const index =
+        data.journal.length - 1 - reverseIndex;
+
+      return `
+
+      <div class="note-card">
+
+        <h3>
+          ${esc(item.title || "Journal Entry")}
+        </h3>
+
+        <div class="small">
+          ${esc(item.date)}
+        </div>
+
+        <p>
+          ${esc(item.body)}
+        </p>
+
+        <br>
+
+        <button
+          class="btn danger"
+          onclick="removeJournal(${index})">
+          Delete
+        </button>
+
+      </div>
+
+      `;
+
+    }).join("")
+
+    :
+
+    `<div class="empty">
+      Your journal is waiting for its first entry.
+    </div>`;
+
+}
+
+
+document
+.getElementById("saveJournal")
+.addEventListener("click",function(){
+
+  const body =
+    document
+    .getElementById("journalBody")
+    .value
+    .trim();
+
+  if(!body){
+    return;
+  }
+
+  data.journal.push({
+
+    title:
+      document
+      .getElementById("journalTitle")
+      .value
+      .trim()
+      ||
+      "Journal Entry",
+
+    body:body,
+
+    date:today()
+
+  });
+
+  saveData();
+
+  document.getElementById("journalTitle").value="";
+  document.getElementById("journalBody").value="";
+
+  renderJournal();
+
+});
+
+
+function removeJournal(index){
+
+  data.journal.splice(index,1);
+
+  saveData();
+
+  renderJournal();
+
+}
+
+
+/* =====================================
+   GOALS
+===================================== */
+
+function renderGoals(){
+
+  const list =
+    document.getElementById("goalList");
+
+  list.innerHTML =
+    data.goals.length
+
+    ?
+
+    data.goals.map(function(item,index){
+
+      return `
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <b>
+            ${esc(item.name)}
+          </b>
+
+          <div class="small">
+
+            ${
+              item.date
+              ? "Target: " + esc(item.date)
+              : "No target date"
+            }
+
+            ·
+
+            First step:
+            ${esc(item.step || "Not added")}
+
+          </div>
+
+          <div class="progress-wrap">
+
+            <div class="progress">
+
+              <span
+                style="width:${Number(item.progress)||0}%">
+              </span>
+
+            </div>
+
+            <div class="small">
+
+              ${Number(item.progress)||0}%
+              complete
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <button
+          class="btn danger"
+          onclick="removeGoal(${index})">
+          Delete
+        </button>
+
+      </div>
+
+      `;
+
+    }).join("")
+
+    :
+
+    `<div class="empty">
+      No goals yet. What are you becoming?
+    </div>`;
+
+}
+
+
+document
+.getElementById("addGoal")
+.addEventListener("click",function(){
+
+  const name =
+    document
+    .getElementById("goalName")
+    .value
+    .trim();
+
+  if(!name){
+    return;
+  }
+
+  data.goals.push({
+
+    name:name,
+
+    date:
+      document
+      .getElementById("goalDate")
+      .value,
+
+    step:
+      document
+      .getElementById("goalStep")
+      .value
+      .trim(),
+
+    progress:
+      Number(
+        document
+        .getElementById("goalProgress")
+        .value
+      )
+
+  });
+
+  saveData();
+
+  document.getElementById("goalName").value="";
+  document.getElementById("goalDate").value="";
+  document.getElementById("goalStep").value="";
+  document.getElementById("goalProgress").value="0";
+
+  renderGoals();
+
+});
+
+
+function removeGoal(index){
+
+  data.goals.splice(index,1);
+
+  saveData();
+
+  renderGoals();
+
+}
+
+
+/* =====================================
+   CONTENT
+===================================== */
+
+function renderContent(){
+
+  const list =
+    document.getElementById("contentList");
+
+  list.innerHTML =
+    data.content.length
+
+    ?
+
+    data.content
+    .slice()
+    .reverse()
+    .map(function(item,reverseIndex){
+
+      const index =
+        data.content.length - 1 - reverseIndex;
+
+      return `
+
+      <div class="note-card">
+
+        <h3>
+          ${esc(item.title || "Content Idea")}
+        </h3>
+
+        <div class="small">
+
+          ${esc(item.type)}
+          ·
+          ${esc(item.date)}
+
+        </div>
+
+        <p>
+          ${esc(item.body)}
+        </p>
+
+        <br>
+
+        <button
+          class="btn danger"
+          onclick="removeContent(${index})">
+          Delete
+        </button>
+
+      </div>
+
+      `;
+
+    }).join("")
+
+    :
+
+    `<div class="empty">
+      No content ideas saved yet.
+    </div>`;
+
+}
+
+
+document
+.getElementById("saveContent")
+.addEventListener("click",function(){
+
+  const body =
+    document
+    .getElementById("contentBody")
+    .value
+    .trim();
+
+  if(!body){
+    return;
+  }
+
+  data.content.push({
+
+    title:
+      document
+      .getElementById("contentTitle")
+      .value
+      .trim()
+      ||
+      "Content Idea",
+
+    type:
+      document
+      .getElementById("contentType")
+      .value,
+
+    body:body,
+
+    date:today()
+
+  });
+
+  saveData();
+
+  document.getElementById("contentTitle").value="";
+  document.getElementById("contentBody").value="";
+
+  renderContent();
+
+});
+
+
+function removeContent(index){
+
+  data.content.splice(index,1);
+
+  saveData();
+
+  renderContent();
+
+}
+
+
+/* =====================================
+   LIVE WEATHER
+===================================== */
+
+async function loadWeather(){
+
+  const weather =
+    document.getElementById("weather");
+
+  if(!navigator.geolocation){
+
+    weather.textContent =
+      "🌤️ Weather: location unavailable";
+
+    return;
+
+  }
+
+
+  navigator.geolocation.getCurrentPosition(
+
+    async function(position){
+
+      try{
+
+        const latitude =
+          position.coords.latitude;
+
+        const longitude =
+          position.coords.longitude;
+
+
+        const response =
+          await fetch(
+
+            "https://api.open-meteo.com/v1/forecast" +
+
+            "?latitude=" +
+            latitude +
+
+            "&longitude=" +
+            longitude +
+
+            "&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m" +
+
+            "&temperature_unit=fahrenheit" +
+
+            "&wind_speed_unit=mph"
+
+          );
+
+
+        const weatherData =
+          await response.json();
+
+        const current =
+          weatherData.current;
+
+
+        const descriptions = {
+
+          0:"Clear sky",
+          1:"Mainly clear",
+          2:"Partly cloudy",
+          3:"Overcast",
+          45:"Fog",
+          48:"Rime fog",
+          51:"Light drizzle",
+          53:"Drizzle",
+          55:"Heavy drizzle",
+          61:"Light rain",
+          63:"Rain",
+          65:"Heavy rain",
+          71:"Light snow",
+          73:"Snow",
+          75:"Heavy snow",
+          80:"Rain showers",
+          81:"Rain showers",
+          82:"Heavy rain showers",
+          95:"Thunderstorm",
+          96:"Thunderstorm with hail",
+          99:"Thunderstorm with hail"
+
+        };
+
+
+        weather.innerHTML =
+
+          "🌤️ " +
+
+          "<strong>" +
+
+          Math.round(
+            current.temperature_2m
+          ) +
+
+          "°F</strong> · " +
+
+          (
+            descriptions[
+              current.weather_code
+            ]
+            ||
+            "Current weather"
+          ) +
+
+          " · feels " +
+
+          Math.round(
+            current.apparent_temperature
+          ) +
+
+          "°F";
+
+      }
+
+      catch(error){
+
+        weather.textContent =
+          "🌤️ Weather: unable to load right now";
+
+      }
+
+    },
+
+    function(){
+
+      weather.textContent =
+        "🌤️ Weather: allow location access to show live weather";
+
+    }
+
+  );
+
+}
+
+
+/* =====================================
+   START EVERYTHING
+===================================== */
+
+renderSchool();
+renderNotes();
+renderJournal();
+renderGoals();
+renderContent();
+loadWeather();
+
 </script>
-</body></html>
+
+</body>
+</html>
